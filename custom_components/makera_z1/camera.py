@@ -24,6 +24,7 @@ from .protocol import CAMERA_START, camera_url
 
 JPEG = b"\xff\xd8"
 TIMEOUT = 8
+MAX_FRAME = 4 * 1024 * 1024  # real frames are ~13 kB (640x480 JPEG)
 
 
 class CameraFeed:
@@ -56,7 +57,7 @@ class CameraFeed:
         session = async_get_clientsession(self._hass)
         try:
             async with session.ws_connect(self._url, timeout=aiohttp.ClientWSTimeout(ws_receive=TIMEOUT),
-                                          heartbeat=None, max_msg_size=0) as ws:
+                                          heartbeat=None, max_msg_size=MAX_FRAME) as ws:
                 await ws.send_str(CAMERA_START)
                 async for msg in ws:
                     if msg.type == aiohttp.WSMsgType.BINARY and msg.data[:2] == JPEG:

@@ -131,6 +131,28 @@ def test_client_against_fake_machine():
     assert bytes(received) == P.build_frame(0xA1, b"?") + P.build_frame(0xA2, b"progress")
 
 
+def test_chatty_machine_cannot_hold_the_client():
+    async def run():
+        async def handle(reader, writer):
+            await reader.read(64)
+            try:
+                while True:  # floods progress frames without pause
+                    writer.write(_frame(0x90, b"spam "))
+                    await writer.drain()
+                    await asyncio.sleep(0.01)
+            except (ConnectionError, OSError):
+                pass
+        server = await asyncio.start_server(handle, "127.0.0.1", 0)
+        port = server.sockets[0].getsockname()[1]
+        loop = asyncio.get_running_loop()
+        start = loop.time()
+        await P.MakeraClient("127.0.0.1", port, timeout=1).progress()
+        elapsed = loop.time() - start
+        server.close()
+        return elapsed
+    assert asyncio.run(run()) < 1.5
+
+
 def test_client_unreachable_raises():
     with pytest.raises(P.MakeraError):
         asyncio.run(P.MakeraClient("127.0.0.1", 1, timeout=1).status())

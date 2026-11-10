@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.1 – 2026-11-10
+
+Hardening after a security review; no change in behaviour.
+
+- Camera: WebSocket messages are limited to 4 MiB (was unlimited), so a faulty device cannot exhaust memory.
+- Status/progress queries: the overall timeout now always applies and at most 64 answer frames are collected,
+  so a peer that keeps sending cannot hold a poll open.
+
 ## 0.1.0 – 2026-11-10
 
 First release.

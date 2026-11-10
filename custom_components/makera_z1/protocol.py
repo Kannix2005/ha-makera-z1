@@ -26,6 +26,8 @@ def camera_url(host: str) -> str:
         host = f"[{host}]"
     return f"ws://{host}:82/ws_video"
 
+MAX_ANSWERS = 64  # frames collected per request at most
+
 HEADER = b"\x86\x68"
 FOOTER = b"\x55\xaa"
 
@@ -205,9 +207,11 @@ class MakeraClient:
             await writer.drain()
             loop = asyncio.get_running_loop()
             deadline = loop.time() + self.timeout
-            while True:
-                # once an answer is in, wait only `settle` seconds for continuation frames
-                wait = settle if answers else deadline - loop.time()
+            while len(answers) < MAX_ANSWERS:
+                # once an answer is in, wait only `settle` seconds for continuation frames,
+                # but never past the overall deadline (a chatty peer must not keep us here)
+                remaining = deadline - loop.time()
+                wait = min(settle, remaining) if answers else remaining
                 if wait <= 0:
                     break
                 try:
