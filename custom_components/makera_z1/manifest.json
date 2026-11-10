@@ -1,0 +1,13 @@
+{
+  "domain": "makera_z1",
+  "name": "Makera Z1",
+  "codeowners": ["@Kannix2005"],
+  "config_flow": true,
+  "dependencies": [],
+  "documentation": "https://github.com/Kannix2005/ha-makera-z1",
+  "integration_type": "device",
+  "iot_class": "local_polling",
+  "issue_tracker": "https://github.com/Kannix2005/ha-makera-z1/issues",
+  "requirements": [],
+  "version": "0.1.0"
+}

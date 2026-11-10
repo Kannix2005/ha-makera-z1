@@ -1,0 +1,53 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Makera Z1",
+        "description": "IP address of the machine (WiFi). Tip: give it a fixed DHCP lease.",
+        "data": {"host": "Host"}
+      }
+    },
+    "error": {"cannot_connect": "The machine did not answer on port 2222. Is it switched on and in the same network?"},
+    "abort": {"already_configured": "This machine is already set up."}
+  },
+  "entity": {
+    "binary_sensor": {
+      "online": {"name": "Online"},
+      "running": {"name": "Job running"},
+      "alarm": {"name": "Alarm"}
+    },
+    "camera": {"camera": {"name": "Camera"}},
+    "sensor": {
+      "state": {
+        "name": "State",
+        "state": {"idle": "Idle", "run": "Running", "hold": "Hold", "pause": "Paused", "wait": "Waiting",
+                  "tool": "Tool change", "alarm": "Alarm", "home": "Homing", "sleep": "Sleep", "unknown": "Unknown"}
+      },
+      "alarm_reason": {
+        "name": "Alarm reason",
+        "state": {
+          "manual": "Stopped manually", "home_fail": "Homing failed", "probe_fail": "Probing failed",
+          "calibrate_fail": "Calibration failed", "atc_home_fail": "Tool changer homing failed",
+          "atc_tool_invalid": "Invalid tool", "atc_no_tool": "No tool in spindle", "atc_has_tool": "Tool already in spindle",
+          "spindle_overheated": "Spindle overheated", "soft_limit": "Soft limit", "cover_open": "Cover open",
+          "probe_invalid": "Probe invalid", "e_stop": "Emergency stop", "power_overheated": "Power supply overheated",
+          "not_homed": "Not homed", "hard_limit": "Hard limit", "motor_error_x": "Motor error X",
+          "motor_error_y": "Motor error Y", "motor_error_z": "Motor error Z", "spindle_stall": "Spindle stalled",
+          "sd_error": "SD card error", "spindle_alarm": "Spindle alarm (power cycle needed)"
+        }
+      },
+      "job_progress": {"name": "Job progress"},
+      "job_file": {"name": "Job file"},
+      "job_elapsed": {"name": "Job elapsed"},
+      "job_remaining": {"name": "Job remaining"},
+      "spindle_speed": {"name": "Spindle speed"},
+      "spindle_temperature": {"name": "Spindle temperature"},
+      "power_temperature": {"name": "Power supply temperature"},
+      "tool": {"name": "Tool"},
+      "feed_rate": {"name": "Feed rate"},
+      "position_x": {"name": "Position X"},
+      "position_y": {"name": "Position Y"},
+      "position_z": {"name": "Position Z"}
+    }
+  }
+}

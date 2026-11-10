@@ -1,0 +1,55 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Makera Z1",
+        "description": "IP-Adresse der Maschine (WLAN). Tipp: eine feste DHCP-Zuordnung vergeben.",
+        "data": {"host": "Host"}
+      }
+    },
+    "error": {"cannot_connect": "Die Maschine antwortet nicht auf Port 2222. Ist sie eingeschaltet und im selben Netz?"},
+    "abort": {"already_configured": "Diese Maschine ist bereits eingerichtet."}
+  },
+  "entity": {
+    "binary_sensor": {
+      "online": {"name": "Online"},
+      "running": {"name": "Job läuft"},
+      "alarm": {"name": "Alarm"}
+    },
+    "camera": {"camera": {"name": "Kamera"}},
+    "sensor": {
+      "state": {
+        "name": "Zustand",
+        "state": {"idle": "Bereit", "run": "Läuft", "hold": "Angehalten", "pause": "Pausiert", "wait": "Wartet",
+                  "tool": "Werkzeugwechsel", "alarm": "Alarm", "home": "Referenzfahrt", "sleep": "Ruhezustand",
+                  "unknown": "Unbekannt"}
+      },
+      "alarm_reason": {
+        "name": "Alarmgrund",
+        "state": {
+          "manual": "Manuell gestoppt", "home_fail": "Referenzfahrt fehlgeschlagen", "probe_fail": "Antasten fehlgeschlagen",
+          "calibrate_fail": "Kalibrierung fehlgeschlagen", "atc_home_fail": "Werkzeugwechsler-Referenz fehlgeschlagen",
+          "atc_tool_invalid": "Ungültiges Werkzeug", "atc_no_tool": "Kein Werkzeug in der Spindel",
+          "atc_has_tool": "Werkzeug schon in der Spindel", "spindle_overheated": "Spindel überhitzt",
+          "soft_limit": "Software-Endlage", "cover_open": "Abdeckung offen", "probe_invalid": "Taster ungültig",
+          "e_stop": "Not-Halt", "power_overheated": "Netzteil überhitzt", "not_homed": "Keine Referenzfahrt",
+          "hard_limit": "Endschalter", "motor_error_x": "Motorfehler X", "motor_error_y": "Motorfehler Y",
+          "motor_error_z": "Motorfehler Z", "spindle_stall": "Spindel blockiert", "sd_error": "SD-Karten-Fehler",
+          "spindle_alarm": "Spindelalarm (aus- und einschalten)"
+        }
+      },
+      "job_progress": {"name": "Job-Fortschritt"},
+      "job_file": {"name": "Job-Datei"},
+      "job_elapsed": {"name": "Job-Laufzeit"},
+      "job_remaining": {"name": "Job-Restzeit"},
+      "spindle_speed": {"name": "Spindeldrehzahl"},
+      "spindle_temperature": {"name": "Spindeltemperatur"},
+      "power_temperature": {"name": "Netzteiltemperatur"},
+      "tool": {"name": "Werkzeug"},
+      "feed_rate": {"name": "Vorschub"},
+      "position_x": {"name": "Position X"},
+      "position_y": {"name": "Position Y"},
+      "position_z": {"name": "Position Z"}
+    }
+  }
+}
