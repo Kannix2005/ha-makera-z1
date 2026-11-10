@@ -96,7 +96,7 @@ def test_h0_is_no_alarm():
 
 
 def test_camera_url():
-    assert P.camera_url("10.10.10.169") == "ws://10.10.10.169:82/ws_video"
+    assert P.camera_url("192.168.1.50") == "ws://192.168.1.50:82/ws_video"
     assert P.camera_url("fe80::1") == "ws://[fe80::1]:82/ws_video"
 
 
