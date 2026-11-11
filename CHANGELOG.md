@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.2 – 2026-11-11
+
+- Makera brand icon for the integration (shown in Home Assistant and HACS).
+- GitHub validation: HACS action, hassfest and the test suite run on every push.
+- No functional changes.
+
 ## 0.1.1 – 2026-11-10
 
 Hardening after a security review; no change in behaviour.
