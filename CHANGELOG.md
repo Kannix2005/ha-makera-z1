@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.3 – 2026-11-17
+
+- LICENSE: removed a copyright line that was copied by mistake from another project. This integration is an
+  original implementation and contains no third-party code.
+- No functional changes.
+
 ## 0.1.2 – 2026-11-11
 
 - Makera brand icon for the integration (shown in Home Assistant and HACS).
