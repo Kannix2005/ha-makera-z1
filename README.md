@@ -28,8 +28,12 @@ Each poll opens a short TCP connection and closes it again, so Makera Studio can
 
 ## Installation
 
-HACS / Home Assistant Marketplace: add this repository as a custom repository (type *Integration*), install
-**Makera Z1**, restart Home Assistant. Or copy `custom_components/makera_z1` into your configuration folder.
+1. In HACS (Home Assistant Marketplace), search for **Makera Z1** and install it.
+2. Restart Home Assistant.
+
+> Not in the list yet? Add `https://github.com/Kannix2005/ha-makera-z1` as a custom repository (type
+> *Integration*) and install it from there. Manual install: copy `custom_components/makera_z1` into your
+> configuration folder.
 
 Then *Settings → Devices & services → Add integration → Makera Z1* and enter the machine's IP address.
 Give the machine a fixed DHCP lease in your router; the integration does not discover it.
